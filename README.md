@@ -18,7 +18,7 @@ Você não precisa saber programar. Na maior parte do caminho, quem guia é a pr
 
 ## 2. Instale o app do Claude
 
-Baixe em https://claude.ai/download (Mac ou Windows) e faça login. Depois, em **Configurações → Conectores**, conecte o **Supabase** e a **Vercel**: é assim que a IA vai criar o banco e colocar o app no ar por você. O resto das instalações a IA vai te guiar no passo 4.
+Baixe em https://claude.ai/download (Mac ou Windows) e faça login. Depois, em **Personalizar → Conectores** (*Customize → Connectors* no app em inglês), conecte o **Supabase** e a **Vercel**: é assim que a IA vai criar o banco e colocar o app no ar por você. O resto das instalações a IA vai te guiar no passo 4.
 
 ## 3. Baixe o kit e abra no Claude
 

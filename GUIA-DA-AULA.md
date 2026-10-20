@@ -91,7 +91,7 @@ O kit é uma pasta com as skills do fluxo já instaladas e configuradas. Você d
 ### Etapa 0: configurar o ambiente
 
 1. **Crie as contas:** Claude (Pro), GitHub, Supabase, Vercel e OpenRouter. Na Supabase e na Vercel, entre com "Continue with GitHub".
-2. **Instale o app do Claude** em [claude.ai/download](https://claude.ai/download) e faça login. Em **Configurações → Conectores**, conecte o **Supabase** e a **Vercel**: é por eles que a IA cria o banco e coloca o app no ar.
+2. **Instale o app do Claude** em [claude.ai/download](https://claude.ai/download) e faça login. Em **Personalizar → Conectores** (*Customize → Connectors* no app em inglês), conecte o **Supabase** e a **Vercel**: é por eles que a IA cria o banco e coloca o app no ar.
 3. **Baixe o kit:** na página do kit no GitHub, clique em **Code → Download ZIP**. Descompacte: a pasta que aparece, `aula-especificacao-ia-main`, já é o seu projeto. Só renomeie, por exemplo para `crm-minha-empresa`. Não crie outra pasta nem mova os arquivos de dentro dela: as pastas ocultas `.claude` e `.agents` ficariam para trás.
 4. **Abra a pasta no app do Claude**, na aba **Code**.
 5. **Rode `/checar-ambiente`.** A IA confere Git, Node.js e GitHub CLI, ajuda nos logins, cria o repositório do projeto no seu GitHub e prepara o arquivo `.env.local` para a chave da OpenRouter, já com o modelo gratuito como padrão.
@@ -262,7 +262,7 @@ Agora o grill conhece o projeto: ele lê o código, o `CONTEXT.md` e os ADRs, e 
 | A IA quer pular etapas | Escreva: "siga o método do `AGENTS.md`, uma etapa por vez". |
 | A conversa ficou longa e a IA se confunde | Abra uma conversa nova e rode `/continuar`. |
 | Erro de chave ou de "unauthorized" | Confira se a chave está colada no `.env.local`, sem espaços. Gere uma chave nova se precisar. |
-| A IA diz que o conector do Supabase ou da Vercel não está disponível | Conecte em Configurações → Conectores e abra uma conversa nova: os conectores carregam no começo da conversa. |
+| A IA diz que o conector do Supabase ou da Vercel não está disponível | Conecte em Personalizar → Conectores (Customize → Connectors, no app em inglês) e abra uma conversa nova: os conectores carregam no começo da conversa. |
 | A IA do app parou de responder (erro 429) | É o limite dos modelos gratuitos: 50 usos por dia e 20 por minuto. Espere, ou compre US$ 10 de crédito na OpenRouter para subir para 1.000 por dia. |
 | O deploy falhou na Vercel | Peça ao agente: "leia o log do último deploy na Vercel e corrija o erro". |
 
