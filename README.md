@@ -10,15 +10,13 @@ Você não precisa saber programar. Na maior parte do caminho, quem guia é a pr
 
 | Conta | Para quê | Plano |
 |---|---|---|
-| [Claude](https://claude.ai) | O agente que constrói com você (Claude Code) | **Pro ou superior (pago)** |
-| [GitHub](https://github.com/signup) | Guarda o histórico do projeto e as tarefas | Gratuito |
-| [Supabase](https://supabase.com) | O banco de dados e o login do app. Use "Continue with GitHub" | Gratuito para começar |
-| [Vercel](https://vercel.com/signup) | Coloca o app no ar. Use "Continue with GitHub" | Gratuito para começar |
-| [OpenRouter](https://openrouter.ai) | A IA dentro do app, com vários modelos numa chave só | Gratuito com o `openrouter/free` (50 usos de IA por dia), sem cartão |
+| [Claude](https://claude.ai) | O agente que especifica e constrói com você (Claude Code) | **Pro ou superior (pago)** |
+| [GitHub](https://github.com/signup) | Guarda o código, o histórico e as tarefas do projeto | Gratuito |
+| [Lovable](https://lovable.dev) | Coloca o app no ar, com banco de dados, login e a IA do app. Use "Continue with GitHub" | Gratuito para começar |
 
 ## 2. Instale o app do Claude
 
-Baixe em https://claude.ai/download (Mac ou Windows) e faça login. Depois, em **Personalizar → Conectores** (*Customize → Connectors* no app em inglês), conecte o **Supabase** e a **Vercel**: é assim que a IA vai criar o banco e colocar o app no ar por você. O resto das instalações a IA vai te guiar no passo 4.
+Baixe em https://claude.ai/download (Mac ou Windows) e faça login. Depois, em **Personalizar → Conectores** (*Customize → Connectors* no app em inglês), conecte o **Lovable**: é assim que a IA vai criar o seu projeto lá e colocar o app no ar por você. O resto das instalações a IA vai te guiar no passo 4.
 
 ## 3. Baixe o kit e abra no Claude
 
@@ -34,7 +32,7 @@ Mande na conversa:
 /checar-ambiente
 ```
 
-A IA confere o que falta no seu computador (Git, Node.js, GitHub CLI), te ajuda a ligar as contas e cria o repositório do seu projeto no GitHub. Siga um item por vez até todos ficarem ✅.
+A IA confere o que falta no seu computador (Git, Node.js, GitHub CLI), te ajuda a entrar no GitHub e cria o seu projeto no Lovable. Você só faz um clique lá: ligar o projeto ao GitHub. Depois a IA junta o kit com o projeto. Siga um item por vez até todos ficarem ✅.
 
 ## 5. Comece pelo grill
 
@@ -43,6 +41,10 @@ A IA confere o que falta no seu computador (Git, Node.js, GitHub CLI), te ajuda 
 ```
 
 A IA vai te fazer perguntas em rodadas, cada uma com uma resposta recomendada. Responda com calma: é aqui que a especificação nasce. Se a aula andar mais rápido que você, pause o grill e volte depois. Nada se perde.
+
+## Quanto custa no Lovable
+
+O plano gratuito do Lovable dá 5 créditos por dia. Criar o projeto gasta cerca de 0,4 crédito, uma vez só. Depois disso, quem escreve o código é o Claude, no seu computador, e o Lovable só recebe e publica: o resto do fluxo quase não gasta crédito. A IA dentro do app usa a cota mensal de IA do Lovable.
 
 ## Ficou para trás ou voltou outro dia?
 
@@ -60,17 +62,17 @@ A IA olha o seu projeto, descobre em que etapa você parou e te diz o próximo p
 | Alinhar | `/grill-with-docs` |
 | Marca | `/marca`, com o site e a logo da sua empresa |
 | Especificar | `/to-spec` e depois `/to-tickets` |
-| Construir | `/implement`, um ticket por conversa |
+| Construir | `/implement`, um ticket por conversa; o resultado aparece no preview do Lovable |
 
 ## Usa o Codex?
 
-Abra a mesma pasta no Codex e chame as skills com `$` em vez de `/`. Exemplo: `$grill-with-docs`. No lugar dos conectores, o `$checar-ambiente` te guia a ligar os servidores MCP do Supabase e da Vercel.
+Abra a mesma pasta no Codex e chame as skills com `$` em vez de `/`. Exemplo: `$grill-with-docs`. No lugar do conector, o `$checar-ambiente` te guia a ligar o servidor MCP do Lovable.
 
 ## As skills do kit
 
 | Skill | Origem | Para quê |
 |---|---|---|
-| `checar-ambiente` | criada para a aula | Confere ferramentas e contas e cria o repositório no GitHub |
+| `checar-ambiente` | criada para a aula | Confere ferramentas e contas e cria o projeto no Lovable, ligado ao GitHub |
 | `grill-with-docs` | Matt Pocock | A IA te entrevista até não sobrar dúvida |
 | `marca` | criada para a aula | Lê o site e a logo e grava o visual do app |
 | `to-spec` | Matt Pocock | Transforma a conversa numa especificação |

@@ -50,15 +50,15 @@ Pense num restaurante:
 
 | Peça | No restaurante | Para quê | Plano |
 |---|---|---|---|
-| **Claude Code** | O chef | Quem constrói, seguindo as skills do kit. Também funciona no Codex. | Claude Pro ou superior (pago) |
-| **GitHub** | O caderno de receitas e as comandas | Guarda o histórico de tudo o que foi feito e as tarefas do projeto | Gratuito |
-| **Supabase** | A despensa | O banco de dados e o login do app | Gratuito para começar |
-| **Vercel** | O salão | Onde o app fica no ar para as pessoas usarem | Gratuito para começar |
-| **OpenRouter** | Os fornecedores | A IA dentro do app, com vários modelos numa chave só | Gratuito com o `openrouter/free` |
+| **Claude Code** | O chef | Quem especifica e constrói, seguindo as skills do kit. Também funciona no Codex. | Claude Pro ou superior (pago) |
+| **GitHub** | O caderno de receitas e as comandas | Guarda o código, o histórico de tudo o que foi feito e as tarefas do projeto | Gratuito |
+| **Lovable** | O restaurante montado | Onde o app fica no ar, com o banco de dados, o login e a IA do app num lugar só | Gratuito para começar |
 
-Por baixo, o app usa Next.js com TypeScript, Tailwind CSS e shadcn/ui para o visual, o AI SDK para falar com a OpenRouter e Vitest para os testes. Você não precisa dominar nenhuma dessas peças: o agente sabe usá-las, e a decisão está registrada no projeto.
+Por baixo, o app usa TanStack Start com React e TypeScript, Tailwind CSS e shadcn/ui para o visual e Vitest para os testes, tudo criado pelo Lovable. Você não precisa dominar nenhuma dessas peças: o agente sabe usá-las, e a decisão está registrada no projeto.
 
-**A IA do app, de graça.** Cada aluno cria a própria conta e a própria chave na OpenRouter, sem cartão. O app nasce usando o `openrouter/free`, que escolhe a cada chamada um modelo gratuito que esteja funcionando: custo zero, até 50 usos de IA por dia (1.000 depois de comprar US$ 10 de crédito, uma vez só). Dois cuidados: a qualidade dos modelos gratuitos varia, e alguns provedores gratuitos podem usar o que recebem para treinar. Com dados reais de clientes, prefira um modelo pago, com o treino desligado em [openrouter.ai/settings/privacy](https://openrouter.ai/settings/privacy). Qual modelo o seu app usa, e quem escolhe, é decisão de produto: entra no grill.
+**Quem faz o quê.** O Claude Code escreve o código no seu computador e envia para o GitHub. O Lovable recebe em segundos e mostra o resultado no preview. Assim você tem o melhor dos dois: o método e o controle do Claude Code, e a hospedagem, o banco e a IA prontos do Lovable. E o código fica no seu GitHub: você não fica preso a nenhuma ferramenta.
+
+**Quanto custa.** O plano gratuito do Lovable dá 5 créditos por dia. Criar o projeto gasta cerca de 0,4 crédito, uma vez só. O resto do fluxo quase não gasta, porque quem escreve o código é o Claude: o agente do Lovable só entra quando não há outro caminho, e o Claude pede a sua autorização antes. A IA dentro do app usa a cota mensal de IA do Lovable. Qual modelo de IA o seu app usa, e quem escolhe, é decisão de produto: entra no grill.
 
 ---
 
@@ -72,7 +72,7 @@ O kit é uma pasta com as skills do fluxo já instaladas e configuradas. Você d
 
 | Comando | Origem | O que faz |
 |---|---|---|
-| `/checar-ambiente` | criada para a aula | Confere ferramentas e contas, guia o que faltar e cria o repositório do projeto no GitHub |
+| `/checar-ambiente` | criada para a aula | Confere ferramentas e contas, guia o que faltar e cria o projeto no Lovable, ligado ao GitHub |
 | `/grill-with-docs` | Matt Pocock | A IA te entrevista até não sobrar decisão em aberto e monta o glossário |
 | `/marca` | criada para a aula | Lê o site e a logo da empresa e grava o visual do app no `DESIGN.md` |
 | `/to-spec` | Matt Pocock | Transforma a conversa numa especificação, publicada como issue no GitHub |
@@ -90,11 +90,11 @@ O kit é uma pasta com as skills do fluxo já instaladas e configuradas. Você d
 
 ### Etapa 0: configurar o ambiente
 
-1. **Crie as contas:** Claude (Pro), GitHub, Supabase, Vercel e OpenRouter. Na Supabase e na Vercel, entre com "Continue with GitHub".
-2. **Instale o app do Claude** em [claude.ai/download](https://claude.ai/download) e faça login. Em **Personalizar → Conectores** (*Customize → Connectors* no app em inglês), conecte o **Supabase** e a **Vercel**: é por eles que a IA cria o banco e coloca o app no ar.
+1. **Crie as contas:** Claude (Pro), GitHub e Lovable. No Lovable, entre com "Continue with GitHub".
+2. **Instale o app do Claude** em [claude.ai/download](https://claude.ai/download) e faça login. Em **Personalizar → Conectores** (*Customize → Connectors* no app em inglês), conecte o **Lovable**: é por ele que a IA cria o seu projeto e coloca o app no ar.
 3. **Baixe o kit:** na página do kit no GitHub, clique em **Code → Download ZIP**. Descompacte: a pasta que aparece, `aula-especificacao-ia-main`, já é o seu projeto. Só renomeie, por exemplo para `crm-minha-empresa`. Não crie outra pasta nem mova os arquivos de dentro dela: as pastas ocultas `.claude` e `.agents` ficariam para trás.
 4. **Abra a pasta no app do Claude**, na aba **Code**.
-5. **Rode `/checar-ambiente`.** A IA confere Git, Node.js e GitHub CLI, ajuda nos logins, cria o repositório do projeto no seu GitHub e prepara o arquivo `.env.local` para a chave da OpenRouter, já com o modelo gratuito como padrão.
+5. **Rode `/checar-ambiente`.** A IA confere Git, Node.js e GitHub CLI, te ajuda a entrar no GitHub e cria o projeto no Lovable. Você faz um clique lá, para ligar o projeto ao GitHub, e a IA junta o kit com o projeto.
 
 **Pronto quando:** os nove itens do check-up aparecem como ✅.
 
@@ -112,7 +112,7 @@ O grill é uma entrevista em rodadas. Em cada rodada, a IA faz as perguntas que 
 - **A recomendação é um ponto de partida; a decisão é sua.** Quando ela não for a sua realidade, discorde e explique por quê.
 - **"Não sei" é uma resposta válida.** Peça para a IA explicar as opções e o que muda com cada uma.
 - **Decida o que fica de fora.** "Isso fica para depois" também é especificação, e protege o projeto de crescer sem controle.
-- **Se a IA não perguntou, traga você.** Por exemplo: quem escolhe o modelo de IA do app, e se dados reais de clientes podem ir para um modelo gratuito.
+- **Se a IA não perguntou, traga você.** Por exemplo: quem escolhe o modelo de IA do app, e o que o app faz quando a IA falha.
 
 **O que sai do grill:** o `CONTEXT.md`, o glossário do seu negócio (o que é um Lead, um Negócio, uma Empresa), e os ADRs em `docs/adr/`, com as decisões difíceis de reverter e o porquê de cada uma.
 
@@ -161,13 +161,13 @@ Em cada ticket, o agente:
 1. escreve um teste que falha, faz o código que passa no teste e repete, uma fatia por vez;
 2. confere os tipos e roda os testes;
 3. revisa o próprio código com `code-review`;
-4. salva o trabalho com um commit no GitHub.
+4. salva o trabalho com um commit e envia para o GitHub, e o Lovable atualiza o preview em segundos.
 
-**O seu papel:** abrir o app no navegador e conferir se o ticket faz o que prometia. Se algo estiver diferente, descreva o que viu, não o que acha que é o código.
+**O seu papel:** abrir o preview no Lovable e conferir se o ticket faz o que prometia. Se algo estiver diferente, descreva o que viu, não o que acha que é o código.
 
-**As chaves:** a chave da OpenRouter e as do Supabase moram só no `.env.local`, que nunca vai para o GitHub. Cole as chaves direto nesse arquivo, nunca na conversa. Quando o projeto estiver ligado à Vercel, cada commit na `main` publica o app sozinho.
+**O banco de dados:** quando um ticket precisa de uma tabela nova, o Claude cria pelo conector do Lovable, sem gastar crédito, e guarda a mudança no histórico do projeto. Você não precisa colar nenhuma chave: o Lovable guarda as do banco e da IA.
 
-**Pronto quando:** todos os tickets estão fechados e o app está no ar na Vercel.
+**Pronto quando:** todos os tickets estão fechados e o app está publicado pelo Lovable.
 
 ### Etapa 5: expandir o núcleo
 
@@ -208,9 +208,9 @@ Agora o grill conhece o projeto: ele lê o código, o `CONTEXT.md` e os ADRs, e 
 
 **Etapa 0, ambiente**
 
-- [ ] As cinco contas criadas
+- [ ] As três contas criadas
 - [ ] O check-up com os nove itens ✅
-- [ ] O repositório do projeto criado no seu GitHub
+- [ ] O projeto criado no Lovable e ligado ao GitHub
 
 **Etapas 1 a 3, especificar a solução**
 
@@ -220,9 +220,9 @@ Agora o grill conhece o projeto: ele lê o código, o `CONTEXT.md` e os ADRs, e 
 
 **Etapa 4, construir**
 
-- [ ] O projeto ligado ao Supabase e à Vercel
-- [ ] O primeiro ticket implementado e salvo no GitHub
+- [ ] O primeiro ticket implementado e aparecendo no preview do Lovable
 - [ ] Todos os tickets fechados
+- [ ] O app publicado pelo Lovable
 
 **A solução final**
 
@@ -246,9 +246,9 @@ Agora o grill conhece o projeto: ele lê o código, o `CONTEXT.md` e os ADRs, e 
 | **Grill** | A entrevista em que a IA te pergunta tudo o que precisa decidir antes de construir. |
 | **`CONTEXT.md`** | O glossário do projeto: as palavras do seu negócio e o que cada uma significa. |
 | **ADR** | Registro de uma decisão de arquitetura: o que foi decidido e por quê. Fica em `docs/adr/`. |
-| **Deploy** | Colocar uma versão do app no ar. Na Vercel, acontece a cada commit na `main`. |
+| **Deploy** | Colocar uma versão do app no ar. No Lovable, é o botão Publicar. |
 | **Migration** | Uma mudança na estrutura do banco de dados, salva como arquivo no projeto. |
-| **`.env.local`** | O arquivo com as chaves secretas do projeto. Fica só no seu computador e nunca vai para o GitHub. |
+| **Preview** | A versão de teste do app, que aparece no editor do Lovable a cada envio para o GitHub. |
 | **Teste automatizado** | Um pequeno programa que confere se uma parte do app faz o que deveria. |
 
 ---
@@ -261,10 +261,9 @@ Agora o grill conhece o projeto: ele lê o código, o `CONTEXT.md` e os ADRs, e 
 | O grill está demorando | É normal: é onde o valor está. Pause, acompanhe a aula e volte depois. |
 | A IA quer pular etapas | Escreva: "siga o método do `AGENTS.md`, uma etapa por vez". |
 | A conversa ficou longa e a IA se confunde | Abra uma conversa nova e rode `/continuar`. |
-| Erro de chave ou de "unauthorized" | Confira se a chave está colada no `.env.local`, sem espaços. Gere uma chave nova se precisar. |
-| A IA diz que o conector do Supabase ou da Vercel não está disponível | Conecte em Personalizar → Conectores (Customize → Connectors, no app em inglês) e abra uma conversa nova: os conectores carregam no começo da conversa. |
-| A IA do app parou de responder (erro 429) | É o limite dos modelos gratuitos: 50 usos por dia e 20 por minuto. Espere, ou compre US$ 10 de crédito na OpenRouter para subir para 1.000 por dia. |
-| O deploy falhou na Vercel | Peça ao agente: "leia o log do último deploy na Vercel e corrija o erro". |
+| A IA diz que o conector do Lovable não está disponível | Conecte em Personalizar → Conectores (Customize → Connectors, no app em inglês) e abra uma conversa nova: os conectores carregam no começo da conversa. |
+| Acabaram os créditos do Lovable | O plano gratuito renova 5 créditos por dia. Como o código é escrito pelo Claude, quase todo o fluxo continua funcionando sem crédito. |
+| O preview do Lovable quebrou | Peça ao agente: "rode os testes e o build, encontre o erro e corrija". |
 
 ---
 
@@ -281,7 +280,7 @@ Agora o grill conhece o projeto: ele lê o código, o `CONTEXT.md` e os ADRs, e 
 Você está ajudando um aluno da aula "Como montar a especificação técnica de um projeto de IA". Ele provavelmente é empresário, não programador. Converse em português simples, explique cada passo técnico em uma frase antes de executá-lo e deixe todas as decisões de negócio com ele.
 
 1. **Confira se o projeto tem o kit:** procure o `AGENTS.md` e a pasta `.claude/skills` (ou `.agents/skills`, no Codex) na pasta aberta.
-2. **Se o kit não estiver lá, instale-o:** baixe o repositório do kit (`git clone --depth 1 https://github.com/alexandre-viverdeia/aula-especificacao-ia` numa pasta temporária) e copie para a raiz do projeto as pastas `.claude`, `.agents` e `docs` e os arquivos `AGENTS.md`, `CLAUDE.md`, `.gitignore`, `README.md` e `GUIA-DA-AULA.md`. Preserve os arquivos que o aluno já tiver.
+2. **Se o kit não estiver lá, instale-o:** baixe o repositório do kit (`git clone --depth 1 https://github.com/alexandre-viverdeia/aula-especificacao-ia` numa pasta temporária) e copie para a raiz do projeto as pastas `.claude`, `.agents` e `docs` e os arquivos `AGENTS.md`, `CLAUDE.md`, `README.md` e `GUIA-DA-AULA.md`. Preserve os arquivos que o aluno já tiver.
 3. **Descubra a etapa:** rode `/continuar`. Ele lê o projeto e aponta a primeira etapa incompleta.
 4. **Conduza uma etapa por vez,** na ordem da seção 4, usando a skill de cada etapa. O grill nunca é pulado: é nele que o aluno aprende a especificar.
 5. **Encerre cada resposta** dizendo ao aluno onde ele está e qual é o próximo comando.

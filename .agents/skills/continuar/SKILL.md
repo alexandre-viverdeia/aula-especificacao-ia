@@ -14,18 +14,18 @@ O usuário parou em algum ponto do método (ambiente, grill, marca, spec, ticket
    - `DESIGN.md`: se a marca já foi aplicada;
    - `gh issue list --state all`: a spec e os tickets, abertos e fechados;
    - `git log --oneline -15` e `package.json`: o que já foi construído;
-   - `.env.local`: só se as chaves existem, sem mostrar os valores.
+   - `docs/agents/lovable-projeto.md` e `git remote -v`: se o projeto do Lovable existe e está ligado ao GitHub.
 2. **Encontre a primeira etapa incompleta**, nesta ordem:
 
    | Sinal | Próximo passo |
    |---|---|
-   | ferramentas ou contas faltando | `/checar-ambiente` |
+   | ferramentas, contas ou o projeto do Lovable faltando | `/checar-ambiente` |
    | sem `CONTEXT.md`, ou grill com decisões em aberto | `/grill-with-docs`, retomando a partir do `CONTEXT.md` e das decisões em aberto |
    | sem `DESIGN.md` | `/marca` |
    | sem issue de spec | `/to-spec` |
    | spec sem tickets | `/to-tickets` |
    | tickets abertos | `/implement` no primeiro ticket sem bloqueio, numa conversa nova |
-   | todos os tickets fechados | conferir o app no ar na Vercel e escolher o próximo módulo (`/grill-with-docs` de novo) |
+   | todos os tickets fechados | conferir o app no preview do Lovable, publicar e escolher o próximo módulo (`/grill-with-docs` de novo) |
 
 3. **Explique ao usuário**, em linguagem simples: onde ele está, o que já está pronto e o comando exato do próximo passo.
 
