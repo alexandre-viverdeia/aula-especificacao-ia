@@ -12,7 +12,7 @@ O usuário é iniciante. Confira os itens na ordem, rodando a verificação voc�
 | # | Item | Verificação | Como resolver |
 |---|---|---|---|
 | 1 | Git | `git --version` | Mac: veja "Instalar o Git no Mac". Windows: `winget install --id Git.Git -e --source winget` |
-| 2 | Node.js 20.19 ou mais novo | `node --version` | Mac: descubra a versão LTS mais recente em https://nodejs.org/dist/index.json (o primeiro item com `lts` preenchido), baixe `https://nodejs.org/dist/<versão>/node-<versão>.pkg` para a pasta Downloads e abra com `open`. Windows: `winget install --id OpenJS.NodeJS.LTS -e --source winget` |
+| 2 | Node.js 20.19 ou mais novo | `node --version` | Mac: descubra a versão LTS mais recente com `curl -s https://nodejs.org/dist/index.tab | awk -F'\t' 'NR>1 && $10!="-" {print $1; exit}'`, baixe `https://nodejs.org/dist/<versão>/node-<versão>.pkg` para a pasta Downloads e abra com `open`. Windows: `winget install --id OpenJS.NodeJS.LTS -e --source winget` |
 | 3 | GitHub CLI | `gh --version` | Mac: pegue o link do arquivo `gh_<versão>_macOS_universal.pkg` em https://api.github.com/repos/cli/cli/releases/latest, baixe para a pasta Downloads e abra com `open`. Windows: `winget install --id GitHub.cli -e --source winget` |
 | 4 | Login no GitHub | `gh auth status` | Rode `gh auth login --web -h github.com -p https` em segundo plano e leia a saída. Mostre ao usuário o código de uso único e o link https://github.com/login/device: ele abre o link, cola o código e autoriza. Quando ele confirmar, rode `gh auth setup-git` e verifique de novo |
 | 5 | Conector do Lovable | As ferramentas do conector do Lovable estão disponíveis e `list_workspaces` funciona | O usuário cria a conta em https://lovable.dev. Depois, no app do Claude, abre Personalizar → Conectores (Customize → Connectors, no app em inglês), conecta o Lovable e autoriza no navegador |
@@ -48,7 +48,7 @@ Avise o usuário antes: vai abrir uma janela do macOS pedindo a senha do computa
 ## Ligar o GitHub e trazer o kit para o projeto
 
 1. Peça para o usuário abrir o link do editor e ligar o GitHub: o ícone do GitHub ou Settings → GitHub → Connect, escolhendo a conta dele. O Lovable cria um repositório privado com o código do app.
-2. Encontre o repositório com `gh repo list --limit 5 --json name,url,createdAt` e confirme com o usuário.
+2. Encontre o repositório com `gh repo list --limit 5 --json name,url,createdAt`: é o mais recente, criado há poucos minutos, com o nome do projeto. Só pergunte ao usuário se houver dúvida.
 3. Traga o código do Lovable para esta pasta sem sobrescrever os arquivos do kit:
 
    ```
@@ -58,7 +58,8 @@ Avise o usuário antes: vai abrir uma janela do macOS pedindo a senha do computa
 
 4. Se `.lovable-tmp/AGENTS.md` tiver um bloco entre `<!-- LOVABLE:BEGIN -->` e `<!-- LOVABLE:END -->`, copie esse bloco para o topo do `AGENTS.md` do kit. Depois apague a pasta `.lovable-tmp`.
 5. Rode `npm install --no-package-lock` e `npm test`.
-6. Faça um commit com o kit ("Kit da aula") e `git push origin main`. Explique ao usuário que o Lovable recebe o envio em segundos.
+6. Se o Git não tiver nome e e-mail, configure só neste projeto, com o nome do GitHub e o e-mail anônimo do GitHub, para o e-mail pessoal do usuário não aparecer no histórico: `git config user.name "$(gh api user --jq '.name // .login')"` e `git config user.email "$(gh api user --jq '"\(.id)+\(.login)@users.noreply.github.com"')"`.
+7. Faça um commit com o kit ("Kit da aula") e `git push origin main`. Explique ao usuário que o Lovable recebe o envio em segundos.
 
 ## Pronto quando
 
