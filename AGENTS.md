@@ -21,6 +21,10 @@ Leia `docs/adr/0001-stack-padrao.md`. A stack é premissa do projeto. No grill, 
 
 O usuário pode pausar o grill a qualquer momento para acompanhar a aula e voltar depois. Quando ele voltar, ou perguntar o que fazer agora, use `/continuar`.
 
+## Supabase e Vercel
+
+Fale com a Supabase e com a Vercel pelos conectores do app do Claude (no Codex, pelos servidores MCP de cada um). Toda mudança no banco aplicada pelo conector também é salva como arquivo em `supabase/migrations/`, para ficar no histórico do GitHub. Nunca mexa em projetos que já existiam na conta sem perguntar.
+
 ## Chaves e senhas
 
 As chaves (OpenRouter, Supabase) moram só no arquivo `.env.local`, que já está no `.gitignore`. Peça para o usuário colar a chave direto nesse arquivo e nunca imprima o valor de uma chave na conversa.
