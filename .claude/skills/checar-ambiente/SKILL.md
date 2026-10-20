@@ -19,7 +19,7 @@ O usuário é iniciante. Confira cada item rodando o comando de verificação vo
 | 6 | Label das issues | `gh label list` contém `ready-for-agent` | `gh label create ready-for-agent --description "Pronta para o agente"` |
 | 7 | Supabase | `npx supabase projects list` | O usuário cria a conta em https://supabase.com (entrar com GitHub) e depois roda `npx supabase login` |
 | 8 | Vercel | `npx vercel whoami` | O usuário cria a conta em https://vercel.com (entrar com GitHub) e depois roda `npx vercel login` |
-| 9 | Chave da OpenRouter | `.env.local` tem `OPENROUTER_API_KEY` preenchida (confira só se existe) | O usuário cria a conta e a chave em https://openrouter.ai/keys. Crie o `.env.local` com a linha `OPENROUTER_API_KEY=` e peça para ele colar a chave direto no arquivo |
+| 9 | Chave da OpenRouter | `.env.local` tem `OPENROUTER_API_KEY` preenchida (confira só se existe) | O usuário cria a conta e a chave em https://openrouter.ai/keys. Crie o `.env.local` com as linhas `OPENROUTER_API_KEY=` e `OPENROUTER_MODEL=openrouter/free` (o modelo gratuito padrão, ver ADR-0001) e peça para ele colar a chave direto no arquivo. A conta e a chave são grátis e não pedem cartão |
 
 Os comandos de login abrem o navegador e pedem interação. Peça para o usuário rodá-los no terminal dele, um de cada vez.
 

@@ -6,9 +6,18 @@ Todo projeto deste kit nasce com a mesma stack mínima, escolhida antes do grill
 - **Tailwind CSS e shadcn/ui**: componentes prontos, que recebem as cores e as fontes do `DESIGN.md`.
 - **Supabase**: banco Postgres e login (Supabase Auth). O acesso aos dados é protegido por Row Level Security. As mudanças no banco entram como migrations versionadas no repositório.
 - **Vercel**: hospedagem, ligada ao repositório do GitHub. Cada push na `main` publica sozinho.
-- **OpenRouter, via AI SDK**: toda chamada de IA do app passa por uma chave só. O modelo fica numa variável de ambiente (`OPENROUTER_MODEL`), então trocar de modelo é mudar uma linha.
+- **OpenRouter, via AI SDK**: toda chamada de IA do app passa por uma chave só, a do próprio usuário. O modelo fica numa variável de ambiente (`OPENROUTER_MODEL`), então trocar de modelo é mudar uma linha. O padrão é `openrouter/free`, que escolhe a cada chamada um modelo gratuito disponível e capaz de atender o pedido: custo zero, com limite de 50 chamadas por dia (1.000 depois de comprar 10 créditos na OpenRouter).
 - **Vitest**: testes automatizados, que dão ao agente o retorno de que o código funciona (a skill `/tdd` depende disso).
 - **GitHub**: histórico do código e issues (a spec e os tickets).
+
+## O que fica para o grill
+
+A stack diz por onde a IA passa, não qual modelo o produto usa. Pergunte no grill:
+
+- quem escolhe o modelo: fixo na configuração, numa tela de Configurações do app, ou um modelo por tarefa;
+- se dados reais de clientes podem ir para modelos gratuitos. Alguns provedores gratuitos podem usar o que recebem para treinar; com dados reais, o caminho é um modelo pago com o treino desligado nas configurações de privacidade da OpenRouter.
+
+A chave nunca aparece numa tela do app: ela fica no `.env.local` e nas variáveis de ambiente da Vercel.
 
 ## Consequências
 

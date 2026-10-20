@@ -54,9 +54,11 @@ Pense num restaurante:
 | **GitHub** | O caderno de receitas e as comandas | Guarda o histórico de tudo o que foi feito e as tarefas do projeto | Gratuito |
 | **Supabase** | A despensa | O banco de dados e o login do app | Gratuito para começar |
 | **Vercel** | O salão | Onde o app fica no ar para as pessoas usarem | Gratuito para começar |
-| **OpenRouter** | Os fornecedores | A IA dentro do app, com vários modelos numa chave só | Modelos gratuitos para testar |
+| **OpenRouter** | Os fornecedores | A IA dentro do app, com vários modelos numa chave só | Gratuito com o `openrouter/free` |
 
 Por baixo, o app usa Next.js com TypeScript, Tailwind CSS e shadcn/ui para o visual, o AI SDK para falar com a OpenRouter e Vitest para os testes. Você não precisa dominar nenhuma dessas peças: o agente sabe usá-las, e a decisão está registrada no projeto.
+
+**A IA do app, de graça.** Cada aluno cria a própria conta e a própria chave na OpenRouter, sem cartão. O app nasce usando o `openrouter/free`, que escolhe a cada chamada um modelo gratuito que esteja funcionando: custo zero, até 50 usos de IA por dia (1.000 depois de comprar US$ 10 de crédito, uma vez só). Dois cuidados: a qualidade dos modelos gratuitos varia, e alguns provedores gratuitos podem usar o que recebem para treinar. Com dados reais de clientes, prefira um modelo pago, com o treino desligado em [openrouter.ai/settings/privacy](https://openrouter.ai/settings/privacy). Qual modelo o seu app usa, e quem escolhe, é decisão de produto: entra no grill.
 
 ---
 
@@ -92,7 +94,7 @@ O kit é uma pasta com as skills do fluxo já instaladas e configuradas. Você d
 2. **Instale o app do Claude** em [claude.ai/download](https://claude.ai/download) e faça login.
 3. **Baixe o kit:** na página do kit no GitHub, clique em **Code → Download ZIP**. Descompacte e dê à pasta o nome do seu projeto, por exemplo `crm-minha-empresa`.
 4. **Abra a pasta no app do Claude**, na aba **Code**.
-5. **Rode `/checar-ambiente`.** A IA confere Git, Node.js e GitHub CLI, ajuda nos logins, cria o repositório do projeto no seu GitHub e prepara o arquivo `.env.local` para a chave da OpenRouter.
+5. **Rode `/checar-ambiente`.** A IA confere Git, Node.js e GitHub CLI, ajuda nos logins, cria o repositório do projeto no seu GitHub e prepara o arquivo `.env.local` para a chave da OpenRouter, já com o modelo gratuito como padrão.
 
 **Pronto quando:** os nove itens do check-up aparecem como ✅.
 
@@ -110,6 +112,7 @@ O grill é uma entrevista em rodadas. Em cada rodada, a IA faz as perguntas que 
 - **A recomendação é um ponto de partida; a decisão é sua.** Quando ela não for a sua realidade, discorde e explique por quê.
 - **"Não sei" é uma resposta válida.** Peça para a IA explicar as opções e o que muda com cada uma.
 - **Decida o que fica de fora.** "Isso fica para depois" também é especificação, e protege o projeto de crescer sem controle.
+- **Se a IA não perguntou, traga você.** Por exemplo: quem escolhe o modelo de IA do app, e se dados reais de clientes podem ir para um modelo gratuito.
 
 **O que sai do grill:** o `CONTEXT.md`, o glossário do seu negócio (o que é um Lead, um Negócio, uma Empresa), e os ADRs em `docs/adr/`, com as decisões difíceis de reverter e o porquê de cada uma.
 
@@ -259,6 +262,7 @@ Agora o grill conhece o projeto: ele lê o código, o `CONTEXT.md` e os ADRs, e 
 | A IA quer pular etapas | Escreva: "siga o método do `AGENTS.md`, uma etapa por vez". |
 | A conversa ficou longa e a IA se confunde | Abra uma conversa nova e rode `/continuar`. |
 | Erro de chave ou de "unauthorized" | Confira se a chave está colada no `.env.local`, sem espaços. Gere uma chave nova se precisar. |
+| A IA do app parou de responder (erro 429) | É o limite dos modelos gratuitos: 50 usos por dia e 20 por minuto. Espere, ou compre US$ 10 de crédito na OpenRouter para subir para 1.000 por dia. |
 | O deploy falhou na Vercel | Peça ao agente: "leia o log do último deploy na Vercel e corrija o erro". |
 
 ---

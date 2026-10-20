@@ -14,7 +14,7 @@ Você não precisa saber programar. Na maior parte do caminho, quem guia é a pr
 | [GitHub](https://github.com/signup) | Guarda o histórico do projeto e as tarefas | Gratuito |
 | [Supabase](https://supabase.com) | O banco de dados e o login do app. Use "Continue with GitHub" | Gratuito para começar |
 | [Vercel](https://vercel.com/signup) | Coloca o app no ar. Use "Continue with GitHub" | Gratuito para começar |
-| [OpenRouter](https://openrouter.ai) | A IA dentro do app, com vários modelos numa chave só | Modelos gratuitos para testar |
+| [OpenRouter](https://openrouter.ai) | A IA dentro do app, com vários modelos numa chave só | Gratuito com o `openrouter/free` (50 usos de IA por dia), sem cartão |
 
 ## 2. Instale o app do Claude
 
