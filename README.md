@@ -32,7 +32,7 @@ Mande na conversa:
 /checar-ambiente
 ```
 
-A IA confere o que falta no seu computador (Git, Node.js, GitHub CLI), te ajuda a entrar no GitHub e cria o seu projeto no Lovable. Você só faz um clique lá: ligar o projeto ao GitHub. Depois a IA junta o kit com o projeto. Siga um item por vez até todos ficarem ✅.
+A IA confere o que falta no seu computador (Git, Node.js, GitHub CLI) e abre os instaladores: você só clica em Instalar e digita a senha do computador. Depois ela te ajuda a entrar no GitHub e cria o seu projeto no Lovable. Você só faz um clique lá: ligar o projeto ao GitHub. Depois a IA junta o kit com o projeto. Siga um item por vez até todos ficarem ✅.
 
 ## 5. Comece pelo grill
 

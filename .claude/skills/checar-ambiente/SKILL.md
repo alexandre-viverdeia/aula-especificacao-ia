@@ -5,15 +5,15 @@ description: Confere se o ambiente de desenvolvimento está pronto (ferramentas,
 
 # Checar ambiente
 
-O usuário é iniciante. Confira os itens na ordem, rodando a verificação você mesmo. Para cada item que faltar, explique em uma frase para que ele serve, faça o que dá para fazer por ele e dê a ação exata do que só ele pode fazer (um link ou um clique). Espere o usuário confirmar antes de verificar de novo. Não peça para o usuário abrir o terminal: você roda os comandos e ele só clica nos links e autoriza.
+O usuário é iniciante. Confira os itens na ordem, rodando a verificação você mesmo. Para cada item que faltar, explique em uma frase para que ele serve, faça o que dá para fazer por ele e dê a ação exata do que só ele pode fazer (um link ou um clique). Programas que faltam, você mesmo baixa e abre o instalador: o usuário só clica em Instalar e digita a senha do computador. Se faltarem vários, abra os instaladores todos de uma vez. Espere o usuário confirmar antes de verificar de novo. Não peça para o usuário abrir o terminal: você roda os comandos e ele só clica nos links e autoriza.
 
 ## Itens
 
 | # | Item | Verificação | Como resolver |
 |---|---|---|---|
-| 1 | Git | `git --version` | Mac: rodar `git --version` faz o sistema oferecer a instalação das "ferramentas de linha de comando"; aceite. Windows: https://git-scm.com/download/win |
-| 2 | Node.js 20.19 ou mais novo | `node --version` | Instalar a versão LTS em https://nodejs.org |
-| 3 | GitHub CLI | `gh --version` | Mac: instalador em https://cli.github.com. Windows: `winget install --id GitHub.cli` |
+| 1 | Git | `git --version` | Mac: rode `xcode-select --install`. Abre uma janela do macOS: o usuário clica em Instalar e aceita os termos (leva alguns minutos). Windows: `winget install --id Git.Git -e --source winget` |
+| 2 | Node.js 20.19 ou mais novo | `node --version` | Mac: descubra a versão LTS mais recente em https://nodejs.org/dist/index.json (o primeiro item com `lts` preenchido), baixe `https://nodejs.org/dist/<versão>/node-<versão>.pkg` para a pasta Downloads e abra com `open`. Windows: `winget install --id OpenJS.NodeJS.LTS -e --source winget` |
+| 3 | GitHub CLI | `gh --version` | Mac: pegue o link do arquivo `gh_<versão>_macOS_universal.pkg` em https://api.github.com/repos/cli/cli/releases/latest, baixe para a pasta Downloads e abra com `open`. Windows: `winget install --id GitHub.cli -e --source winget` |
 | 4 | Login no GitHub | `gh auth status` | Rode `gh auth login --web -h github.com -p https` em segundo plano e leia a saída. Mostre ao usuário o código de uso único e o link https://github.com/login/device: ele abre o link, cola o código e autoriza. Quando ele confirmar, rode `gh auth setup-git` e verifique de novo |
 | 5 | Conector do Lovable | As ferramentas do conector do Lovable estão disponíveis e `list_workspaces` funciona | O usuário cria a conta em https://lovable.dev. Depois, no app do Claude, abre Personalizar → Conectores (Customize → Connectors, no app em inglês), conecta o Lovable e autoriza no navegador |
 | 6 | Projeto no Lovable | `docs/agents/lovable-projeto.md` existe e `get_project` com o id dele funciona | Veja "Criar o projeto no Lovable" |
