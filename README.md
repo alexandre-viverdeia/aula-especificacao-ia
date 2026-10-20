@@ -21,7 +21,7 @@ Baixe em https://claude.ai/download (Mac ou Windows) e faça login. Depois, em *
 ## 3. Baixe o kit e abra no Claude
 
 1. Nesta página, clique em **Code → Download ZIP**.
-2. Descompacte o arquivo. A pasta que aparece, `aula-especificacao-ia-main`, já é o seu projeto: só renomeie com o nome dele, por exemplo `crm-minha-empresa`, e deixe num lugar fácil, como Documentos. Não crie uma pasta antes nem mova os arquivos de dentro dela para outra: as pastas `.claude` e `.agents` ficam ocultas no Finder e ficariam para trás.
+2. Descompacte o arquivo. A pasta que aparece, `aula-especificacao-ia-main`, já é o seu projeto: só renomeie com o nome dele, por exemplo `meu-projeto`, e deixe num lugar fácil, como Documentos. Não crie uma pasta antes nem mova os arquivos de dentro dela para outra: as pastas `.claude` e `.agents` ficam ocultas no Finder e ficariam para trás.
 3. Abra o app do Claude, entre na aba **Code** e selecione essa pasta.
 
 ## 4. Rode o check-up do ambiente
@@ -36,8 +36,17 @@ A IA confere o que falta no seu computador (Git, Node.js, GitHub CLI), te ajuda 
 
 ## 5. Comece pelo grill
 
+Copie o modelo abaixo, preencha os colchetes com o seu caso e mande na conversa:
+
 ```
-/grill-with-docs Quero o núcleo de um CRM para a minha empresa. Vendo [o quê] para [quem].
+/grill-with-docs Quero construir [o sistema] para a minha empresa.
+O que vendemos: [produto ou serviço, e o ticket médio]
+Para quem: [o tipo de cliente]
+O problema: [o que dá errado hoje, com um caso real]
+Como é feito hoje: [planilha, WhatsApp, caderno, outro sistema]
+Quem vai usar: [quem e quantas pessoas]
+Como vou saber que funcionou: [o resultado que quero ver]
+O que já sei que fica de fora: [o que não precisa agora]
 ```
 
 A IA vai te fazer perguntas em rodadas, cada uma com uma resposta recomendada. Responda com calma: é aqui que a especificação nasce. Se a aula andar mais rápido que você, pause o grill e volte depois. Nada se perde.

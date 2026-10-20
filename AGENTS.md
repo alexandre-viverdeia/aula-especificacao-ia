@@ -1,8 +1,6 @@
-# Projeto da aula: Como montar a especificação técnica de um projeto de IA
+# Como trabalhar neste projeto
 
 Converse com o usuário sempre em português do Brasil, inclusive nas entrevistas (grill), nas especificações, nas issues e nos commits. O usuário é um empresário, não um programador. Explique cada passo técnico em uma frase simples antes de executá-lo.
-
-O método completo, etapa por etapa, está em `GUIA-DA-AULA.md`.
 
 ## A stack já está decidida
 
