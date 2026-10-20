@@ -23,7 +23,7 @@ Baixe em https://claude.ai/download (Mac ou Windows) e faça login. O resto das 
 ## 3. Baixe o kit e abra no Claude
 
 1. Nesta página, clique em **Code → Download ZIP**.
-2. Descompacte o arquivo e renomeie a pasta com o nome do seu projeto, por exemplo `crm-minha-empresa`. Deixe a pasta num lugar fácil, como Documentos.
+2. Descompacte o arquivo. A pasta que aparece, `aula-especificacao-ia-main`, já é o seu projeto: só renomeie com o nome dele, por exemplo `crm-minha-empresa`, e deixe num lugar fácil, como Documentos. Não crie uma pasta antes nem mova os arquivos de dentro dela para outra: as pastas `.claude` e `.agents` ficam ocultas no Finder e ficariam para trás.
 3. Abra o app do Claude, entre na aba **Code** e selecione essa pasta.
 
 ## 4. Rode o check-up do ambiente

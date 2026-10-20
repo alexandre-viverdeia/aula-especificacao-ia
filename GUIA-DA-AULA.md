@@ -92,7 +92,7 @@ O kit é uma pasta com as skills do fluxo já instaladas e configuradas. Você d
 
 1. **Crie as contas:** Claude (Pro), GitHub, Supabase, Vercel e OpenRouter. Na Supabase e na Vercel, entre com "Continue with GitHub".
 2. **Instale o app do Claude** em [claude.ai/download](https://claude.ai/download) e faça login.
-3. **Baixe o kit:** na página do kit no GitHub, clique em **Code → Download ZIP**. Descompacte e dê à pasta o nome do seu projeto, por exemplo `crm-minha-empresa`.
+3. **Baixe o kit:** na página do kit no GitHub, clique em **Code → Download ZIP**. Descompacte: a pasta que aparece, `aula-especificacao-ia-main`, já é o seu projeto. Só renomeie, por exemplo para `crm-minha-empresa`. Não crie outra pasta nem mova os arquivos de dentro dela: as pastas ocultas `.claude` e `.agents` ficariam para trás.
 4. **Abra a pasta no app do Claude**, na aba **Code**.
 5. **Rode `/checar-ambiente`.** A IA confere Git, Node.js e GitHub CLI, ajuda nos logins, cria o repositório do projeto no seu GitHub e prepara o arquivo `.env.local` para a chave da OpenRouter, já com o modelo gratuito como padrão.
 
@@ -257,7 +257,7 @@ Agora o grill conhece o projeto: ele lê o código, o `CONTEXT.md` e os ADRs, e 
 
 | Problema | O que fazer |
 |---|---|
-| "Essa skill não está instalada" | Confira se o app está aberto na pasta do projeto, a que tem o `AGENTS.md`. |
+| "Essa skill não está instalada" | Confira se o app está aberto na pasta do projeto, a que tem o `AGENTS.md` direto nela, não dentro de uma subpasta. |
 | O grill está demorando | É normal: é onde o valor está. Pause, acompanhe a aula e volte depois. |
 | A IA quer pular etapas | Escreva: "siga o método do `AGENTS.md`, uma etapa por vez". |
 | A conversa ficou longa e a IA se confunde | Abra uma conversa nova e rode `/continuar`. |
