@@ -12,12 +12,13 @@ Leia `docs/adr/0001-stack-padrao.md`. A stack é premissa do projeto. No grill, 
 |---|---|---|
 | Ambiente | `/checar-ambiente` | todos os itens do check-up estão ✅ e o projeto do Lovable está ligado ao GitHub |
 | Alinhar | `/grill-with-docs` | nenhuma decisão em aberto e `CONTEXT.md` atualizado |
-| Marca | `/marca` | `DESIGN.md` criado a partir do site e da logo da empresa |
 | Especificar | `/to-spec` e depois `/to-tickets` | a spec e os tickets publicados como issues no GitHub |
 | Construir | `/implement` | um ticket por conversa; ao fim de cada ticket, commit e push na `main`, e o resultado aparece no preview do Lovable |
 | Expandir | o mesmo fluxo, a partir do `/grill-with-docs` | cada módulo novo nasce com sua própria spec e seus tickets |
 
-O usuário pode pausar o grill a qualquer momento para acompanhar a aula e voltar depois. Quando ele voltar, ou perguntar o que fazer agora, use `/continuar`.
+O usuário pode pausar o grill a qualquer momento e voltar depois. Quando ele voltar, ou perguntar o que fazer agora, descubra a etapa pelo estado do projeto (`CONTEXT.md` e `docs/adr/`, as issues com `gh issue list --state all` e o `git log`) e diga exatamente o próximo comando.
+
+Se o usuário quiser o app com a cara da empresa, ele passa o site e a logo no grill. Veja `docs/agents/visual.md`.
 
 ## Lovable
 

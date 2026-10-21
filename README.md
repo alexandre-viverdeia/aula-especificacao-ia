@@ -2,7 +2,7 @@
 
 Este kit é o ponto de partida do seu projeto. Ele traz o método da aula pronto para usar: as skills que fazem a IA te entrevistar, transformar as respostas em especificação e tarefas e só então construir.
 
-> **O método é do Matt Pocock.** As skills principais deste kit (`grill-with-docs`, `to-spec`, `to-tickets`, `implement` e as que elas usam por baixo) vêm do workflow que ele publica em [github.com/mattpocock/skills](https://github.com/mattpocock/skills). Nós selecionamos só as que o fluxo da aula usa, ajustamos para funcionarem no app do Claude e somamos três skills feitas para a aula. Quer entender o porquê de cada etapa? Veja a seção [Para se aprofundar](#para-se-aprofundar).
+> **O método é do Matt Pocock.** As skills principais deste kit (`grill-with-docs`, `to-spec`, `to-tickets`, `implement` e as que elas usam por baixo) vêm do workflow que ele publica em [github.com/mattpocock/skills](https://github.com/mattpocock/skills). Nós selecionamos só as que o fluxo da aula usa, ajustamos para funcionarem no app do Claude e somamos uma skill feita para a aula, a `checar-ambiente`. Quer entender o porquê de cada etapa? Veja a seção [Para se aprofundar](#para-se-aprofundar).
 
 Você não precisa saber programar. Na maior parte do caminho, quem guia é a própria IA.
 
@@ -57,19 +57,14 @@ O plano gratuito do Lovable dá 5 créditos por dia. Criar o projeto gasta cerca
 
 ## Ficou para trás ou voltou outro dia?
 
-```
-/continuar
-```
-
-A IA olha o seu projeto, descobre em que etapa você parou e te diz o próximo passo.
+Pergunte ao agente: "em que etapa estou e qual é o próximo passo?". Ele lê o projeto e te diz. Se você fez a aula, também pode entregar a ele o PDF do guia da aula, que foi escrito para o agente entender onde você está.
 
 ## O método, do começo ao fim
 
 | Etapa | Comando |
 |---|---|
 | Ambiente | `/checar-ambiente` |
-| Alinhar | `/grill-with-docs` |
-| Marca | `/marca`, com o site e a logo da sua empresa |
+| Alinhar | `/grill-with-docs`; passe o site e a logo da empresa para o app seguir o seu visual |
 | Especificar | `/to-spec` e depois `/to-tickets` |
 | Construir | `/implement`, um ticket por conversa; o resultado aparece no preview do Lovable |
 
@@ -83,11 +78,9 @@ Abra a mesma pasta no Codex e chame as skills com `$` em vez de `/`. Exemplo: `$
 |---|---|---|
 | `checar-ambiente` | criada para a aula | Confere ferramentas e contas e cria o projeto no Lovable, ligado ao GitHub |
 | `grill-with-docs` | Matt Pocock | A IA te entrevista até não sobrar dúvida |
-| `marca` | criada para a aula | Lê o site e a logo e grava o visual do app |
 | `to-spec` | Matt Pocock | Transforma a conversa numa especificação |
 | `to-tickets` | Matt Pocock | Quebra a especificação em tickets pequenos, em ordem |
 | `implement` | Matt Pocock | Constrói um ticket, com testes e revisão |
-| `continuar` | criada para a aula | Descobre onde você parou e diz o próximo passo |
 | `grilling`, `domain-modeling`, `tdd`, `code-review`, `codebase-design` | Matt Pocock | Rodam por baixo das skills acima |
 
 ## Para se aprofundar
@@ -97,4 +90,4 @@ Abra a mesma pasta no Codex e chame as skills com `$` em vez de `/`. Exemplo: `$
 
 ## Créditos e licença
 
-As skills marcadas como "Matt Pocock" são de autoria dele e estão sob licença MIT; o texto da licença está em `LICENSE-mattpocock-skills`. Para a aula, fizemos dois ajustes: elas vêm dentro do projeto e sem a trava `disable-model-invocation`, que faz o app desktop esconder essas skills. As skills `checar-ambiente`, `marca` e `continuar` foram criadas por Alexandre Axioma para esta aula.
+As skills marcadas como "Matt Pocock" são de autoria dele e estão sob licença MIT; o texto da licença está em `LICENSE-mattpocock-skills`. Para a aula, fizemos dois ajustes: elas vêm dentro do projeto e sem a trava `disable-model-invocation`, que faz o app desktop esconder essas skills. A skill `checar-ambiente` foi criada por Alexandre Axioma para esta aula.
