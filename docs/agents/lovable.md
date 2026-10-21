@@ -1,6 +1,6 @@
 # Lovable
 
-O app roda no Lovable: o projeto inicial é TanStack Start (React e TypeScript, Tailwind CSS e shadcn/ui), com o Lovable Cloud (banco Postgres e login) e o Lovable AI (a IA do app). O código mora no repositório do GitHub ligado ao Lovable. O que você envia para a `main` aparece no editor do Lovable em segundos.
+O app roda no Lovable: o projeto novo do Lovable é TanStack Start (React e TypeScript, Tailwind CSS e shadcn/ui), com o Lovable Cloud (banco Postgres e login) e o Lovable AI (a IA do app). Um projeto que já existe pode ter outra base, como React com Vite e funções em `supabase/functions/`: confira no `package.json` e siga o padrão que o projeto já usa. O código mora no repositório do GitHub ligado ao Lovable. O que você envia para a `main` aparece no editor do Lovable em segundos.
 
 O nome, o id do projeto e o link do editor estão em `docs/agents/lovable-projeto.md`, criado pelo `/checar-ambiente`.
 
@@ -13,6 +13,7 @@ O nome, o id do projeto e o link do editor estão em `docs/agents/lovable-projet
 | Consultar ou inserir dados de teste | `query_database` | não gasta |
 | Publicar o app | `deploy_project` do conector, ou o botão Publicar no editor | não gasta |
 | Criar o projeto | `create_project`, uma vez, no `/checar-ambiente` | cerca de 0,4 |
+| Copiar um projeto que já existe | `remix_project`, uma vez, no `/checar-ambiente` | confira no saldo do Lovable |
 | O que nenhum caminho acima resolve | `send_message` para o agente do Lovable | gasta |
 
 O plano gratuito do Lovable dá 5 créditos por dia. Antes de qualquer `send_message`, explique ao usuário por que não há outro caminho e peça a autorização dele.
@@ -28,7 +29,7 @@ Toda tabela nasce com Row Level Security ligada. O `query_database` roda no banc
 
 ## A IA do app (Lovable AI)
 
-Chame o gateway do Lovable a partir de uma função de servidor (`createServerFn`, de `@tanstack/react-start`). A chave `LOVABLE_API_KEY` já existe no servidor do Lovable Cloud: nunca a coloque no código nem na conversa.
+Chame o gateway do Lovable a partir de uma função de servidor: `createServerFn`, de `@tanstack/react-start`, no TanStack Start; uma função em `supabase/functions/`, chamada com `supabase.functions.invoke`, num projeto com Vite. Lá a chave vem de `Deno.env.get("LOVABLE_API_KEY")`. A chave `LOVABLE_API_KEY` já existe no servidor do Lovable Cloud: nunca a coloque no código nem na conversa.
 
 ```ts
 const res = await fetch("https://ai.gateway.lovable.dev/v1/chat/completions", {

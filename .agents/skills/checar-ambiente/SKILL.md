@@ -1,6 +1,6 @@
 ---
 name: checar-ambiente
-description: Confere se o ambiente de desenvolvimento está pronto (ferramentas, contas e conexões), cria o projeto no Lovable e liga a pasta do kit a ele, guiando o usuário no que faltar, um item por vez. Use no começo do projeto, quando uma instalação ou um login falhar, ou antes de construir.
+description: Confere se o ambiente de desenvolvimento está pronto (ferramentas, contas e conexões), cria o projeto no Lovable (do zero ou a partir de um projeto que já existe) e liga a pasta do kit a ele, guiando o usuário no que faltar, um item por vez. Use no começo do projeto, quando uma instalação ou um login falhar, ou antes de construir.
 ---
 
 # Checar ambiente
@@ -16,12 +16,19 @@ O usuário é iniciante. Confira os itens na ordem, rodando a verificação voc�
 | 3 | GitHub CLI | `gh --version` | Mac: pegue o link do arquivo `gh_<versão>_macOS_universal.pkg` em https://api.github.com/repos/cli/cli/releases/latest, baixe para a pasta Downloads e abra com `open`. Windows: `winget install --id GitHub.cli -e --source winget` |
 | 4 | Login no GitHub | `gh auth status` | Rode `gh auth login --web -h github.com -p https` em segundo plano e leia a saída. Mostre ao usuário o código de uso único e o link https://github.com/login/device: ele abre o link, cola o código e autoriza. Quando ele confirmar, rode `gh auth setup-git` e verifique de novo |
 | 5 | Conector do Lovable | As ferramentas do conector do Lovable estão disponíveis e `list_workspaces` funciona | O usuário cria a conta em https://lovable.dev. Depois, no app do Claude, abre Personalizar → Conectores (Customize → Connectors, no app em inglês), conecta o Lovable e autoriza no navegador |
-| 6 | Projeto no Lovable | `docs/agents/lovable-projeto.md` existe e `get_project` com o id dele funciona | Veja "Criar o projeto no Lovable" |
+| 6 | Projeto no Lovable | `docs/agents/lovable-projeto.md` existe e `get_project` com o id dele funciona | Veja "Do zero ou de um projeto que já existe" |
 | 7 | Projeto ligado ao GitHub | `git remote -v` mostra o repositório que o Lovable criou | Veja "Ligar o GitHub e trazer o kit para o projeto" |
 | 8 | Dependências e testes | `npm test` passa | `npm install --no-package-lock` e rode `npm test` de novo |
 | 9 | Label das issues | `gh label list` contém `ready-for-agent` | `gh label create ready-for-agent --description "Pronta para o agente"` |
 
 Os conectores carregam no começo da conversa. Se o usuário acabou de conectar o Lovable e as ferramentas não aparecem, peça para ele abrir uma conversa nova nesta pasta e rodar `/checar-ambiente` de novo; os itens que já estão prontos passam rápido.
+
+## Do zero ou de um projeto que já existe
+
+Antes do item 6, pergunte se o projeto começa do zero ou a partir de um projeto que já existe no Lovable, e peça o link dele no segundo caso. Se o usuário ainda não souber, pare aqui: mostre a tabela com os itens 1 a 5 e diga que, quando ele souber, é só rodar `/checar-ambiente` de novo.
+
+- Do zero: veja "Criar o projeto no Lovable".
+- De um projeto que já existe: veja "Partir de um projeto que já existe".
 
 ## Instalar o Git no Mac
 
@@ -45,6 +52,13 @@ Avise o usuário antes: vai abrir uma janela do macOS pedindo a senha do computa
 4. Ative o banco com `enable_database`, que não gasta crédito.
 5. Crie `docs/agents/lovable-projeto.md` com o nome do projeto, o id, o workspace e o link do editor.
 
+## Partir de um projeto que já existe
+
+1. O id do projeto é o trecho do link depois de `/projects/`. Se o projeto é do usuário (`get_project` funciona e o workspace aparece em `list_workspaces`), use esse mesmo projeto.
+2. Se o projeto é de outra pessoa, faça uma cópia dele na conta do usuário com `remix_project`, no workspace dele e com o nome que ele escolher. Se o conector recusar, peça para ele abrir o link, clicar em Remix e colar aqui o link do projeto novo.
+3. Explique o que veio na cópia: o código, as tabelas e as funções do servidor. Os dados, as chaves que o dono adicionou à mão e os gatilhos ligados ao cadastro (`auth.users`) não vêm. Os gatilhos você recria no passo "Conferir o banco de uma cópia".
+4. Crie `docs/agents/lovable-projeto.md` com o nome do projeto, o id, o workspace, o link do editor e o link do projeto de origem.
+
 ## Ligar o GitHub e trazer o kit para o projeto
 
 1. Peça para o usuário abrir o link do editor e ligar o GitHub: o ícone do GitHub ou Settings → GitHub → Connect, escolhendo a conta dele. O Lovable cria um repositório privado com o código do app.
@@ -56,10 +70,16 @@ Avise o usuário antes: vai abrir uma janela do macOS pedindo a senha do computa
    cp -Rn .lovable-tmp/. .
    ```
 
+   Num projeto que já existe, o projeto vale mais que o kit: copie tudo de `.lovable-tmp` por cima, menos `AGENTS.md`, `CLAUDE.md`, `docs/agents/lovable-projeto.md` e as skills que o kit também tem em `.claude/skills/` e `.agents/skills/`, que ficam na versão do kit. Se o projeto tinha um `AGENTS.md`, junte os dois: mantenha o do projeto e acrescente as seções do kit que faltarem.
 4. Se `.lovable-tmp/AGENTS.md` tiver um bloco entre `<!-- LOVABLE:BEGIN -->` e `<!-- LOVABLE:END -->`, copie esse bloco para o topo do `AGENTS.md` do kit. Depois apague a pasta `.lovable-tmp`.
 5. Rode `npm install --no-package-lock` e `npm test`.
+   Se o projeto é uma cópia, confira o banco agora (veja "Conferir o banco de uma cópia").
 6. Se o Git não tiver nome e e-mail, configure só neste projeto, com o nome do GitHub e o e-mail anônimo do GitHub, para o e-mail pessoal do usuário não aparecer no histórico: `git config user.name "$(gh api user --jq '.name // .login')"` e `git config user.email "$(gh api user --jq '"\(.id)+\(.login)@users.noreply.github.com"')"`.
 7. Faça um commit com o kit ("Kit da aula") e `git push origin main`. Explique ao usuário que o Lovable recebe o envio em segundos.
+
+## Conferir o banco de uma cópia
+
+Procure `ON auth.users` em `supabase/migrations/` e em `.lovable/consolidated_schema.sql`. Para cada gatilho que aparecer, confira com `query_database` se ele existe no banco novo (`select tgname from pg_trigger where tgrelid = 'auth.users'::regclass and not tgisinternal`) e crie os que faltarem com o mesmo SQL, antes do primeiro cadastro no app. Sem eles, o cadastro pode não montar a conta e o app abre vazio.
 
 ## Pronto quando
 

@@ -32,7 +32,7 @@ Mande na conversa:
 /checar-ambiente
 ```
 
-A IA confere o que falta no seu computador (Git, Node.js, GitHub CLI) e abre os instaladores: você só clica em Instalar e digita a senha do computador. Depois ela te ajuda a entrar no GitHub e cria o seu projeto no Lovable. Você só faz um clique lá: ligar o projeto ao GitHub. Depois a IA junta o kit com o projeto. Siga um item por vez até todos ficarem ✅.
+A IA confere o que falta no seu computador (Git, Node.js, GitHub CLI) e abre os instaladores: você só clica em Instalar e digita a senha do computador. Depois ela te ajuda a entrar no GitHub e pergunta se o projeto começa do zero ou a partir de um projeto que já existe no Lovable. Do zero, ela cria o projeto; de um que já existe, você passa o link e ela faz uma cópia na sua conta (o remix). Você só faz um clique lá: ligar o projeto ao GitHub. Depois a IA junta o kit com o projeto. Siga um item por vez até todos ficarem ✅.
 
 ## 5. Comece pelo grill
 
@@ -47,6 +47,17 @@ Como é feito hoje: [planilha, WhatsApp, caderno, outro sistema]
 Quem vai usar: [quem e quantas pessoas]
 Como vou saber que funcionou: [o resultado que quero ver]
 O que já sei que fica de fora: [o que não precisa agora]
+```
+
+Partiu de um projeto que já existe? Use este modelo:
+
+```
+/grill-with-docs Quero adaptar este projeto para a minha empresa.
+O que vendemos: [produto ou serviço, e o ticket médio]
+Para quem: [o tipo de cliente]
+O que quero mudar: [a marca, o processo, as telas, o que falta]
+O que não serve para mim: [o que pode sair]
+Como vou saber que funcionou: [o resultado que quero ver]
 ```
 
 A IA vai te fazer perguntas em rodadas, cada uma com uma resposta recomendada. Responda com calma: é aqui que a especificação nasce. Se a aula andar mais rápido que você, pause o grill e volte depois. Nada se perde.
@@ -76,7 +87,7 @@ Abra a mesma pasta no Codex e chame as skills com `$` em vez de `/`. Exemplo: `$
 
 | Skill | Origem | Para quê |
 |---|---|---|
-| `checar-ambiente` | criada para a aula | Confere ferramentas e contas e cria o projeto no Lovable, ligado ao GitHub |
+| `checar-ambiente` | criada para a aula | Confere ferramentas e contas e cria o projeto no Lovable (do zero ou copiando um que já existe), ligado ao GitHub |
 | `grill-with-docs` | Matt Pocock | A IA te entrevista até não sobrar dúvida |
 | `to-spec` | Matt Pocock | Transforma a conversa numa especificação |
 | `to-tickets` | Matt Pocock | Quebra a especificação em tickets pequenos, em ordem |

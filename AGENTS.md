@@ -10,11 +10,13 @@ Leia `docs/adr/0001-stack-padrao.md`. A stack é premissa do projeto. No grill, 
 
 | Etapa | Comando | Pronto quando |
 |---|---|---|
-| Ambiente | `/checar-ambiente` | todos os itens do check-up estão ✅ e o projeto do Lovable está ligado ao GitHub |
+| Ambiente | `/checar-ambiente` | todos os itens do check-up estão ✅ e o projeto do Lovable, novo ou copiado de um que já existe, está ligado ao GitHub |
 | Alinhar | `/grill-with-docs` | nenhuma decisão em aberto e `CONTEXT.md` atualizado |
 | Especificar | `/to-spec` e depois `/to-tickets` | a spec e os tickets publicados como issues no GitHub |
 | Construir | `/implement` | um ticket por conversa; ao fim de cada ticket, commit e push na `main`, e o resultado aparece no preview do Lovable |
 | Expandir | o mesmo fluxo, a partir do `/grill-with-docs` | cada módulo novo nasce com sua própria spec e seus tickets |
+
+Num projeto que já existe, leia o código, o `CONTEXT.md` e os ADRs antes do grill e pergunte só o que muda.
 
 O usuário pode pausar o grill a qualquer momento e voltar depois. Quando ele voltar, ou perguntar o que fazer agora, descubra a etapa pelo estado do projeto (`CONTEXT.md` e `docs/adr/`, as issues com `gh issue list --state all` e o `git log`) e diga exatamente o próximo comando.
 
